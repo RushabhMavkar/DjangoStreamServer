@@ -1,0 +1,10 @@
+{% extends 'main/layout.html'%}
+{% block content %}
+<div class="container pt-3">
+    {% if server %}
+    {% include 'main/block-server-info.html' %}
+    {% else %}
+    {% include 'main/block-create-server-dialog.html' %}
+    {% endif %}
+</div>
+{% endblock content %}

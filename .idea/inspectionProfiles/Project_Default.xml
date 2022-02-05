@@ -1,0 +1,59 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ourVersions">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.10" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="anPortalForm.models.UserSolar.DoesNotExist" />
+          <option value="anPortalForm.models.UserSolar.objects" />
+          <option value="anPortalForm.models.Passwords.objects" />
+          <option value="anPortalForm.models.Roles.objects" />
+          <option value="anPortalForm.models.Tokens.objects" />
+          <option value="anPortalForm.models.Tokens.DoesNotExist" />
+          <option value="anPortalForm.models.TransporterMaster.objects" />
+          <option value="anPortalForm.models.VendorMaster.objects" />
+          <option value="anPortalForm.models.PlantMaster.objects" />
+          <option value="anPortalForm.models.ConverterMaster.objects" />
+          <option value="anPortalForm.models.VendorDetails.objects" />
+          <option value="anPortalForm.models.Zrm.objects" />
+          <option value="anPortalForm.models.ZrmMail.objects" />
+          <option value="anPortalForm.models.Mb5b.objects" />
+          <option value="anPortalForm.models.JobWorkerChallan.objects" />
+          <option value="anPortalForm.models.RateMaster.objects" />
+          <option value="anPortalForm.models.RateSheet.objects" />
+          <option value="anPortalForm.models.EwayBill.objects" />
+          <option value="anPortalForm.models.DispatchStatus.objects" />
+          <option value="anPortalForm.models.TodoAnInvoice.objects" />
+          <option value="anPortalForm.models.AnTransporterInvoice.objects" />
+          <option value="anPortalForm.models.InTransit.objects" />
+          <option value="crmtable.models.crmtable.objects" />
+          <option value="main.models.FinalConsumption.*" />
+          <option value="main.models.StandardValueHistory.*" />
+          <option value="main.models.StandardValue.*" />
+          <option value="main.models.ActualSteamConsumption.*" />
+          <option value="main.models.ActualMeltroomConsumption.*" />
+          <option value="main.models.BatchConsumption.*" />
+          <option value="main.models.ProductMaster.*" />
+          <option value="main.models.UtilityMaster.*" />
+          <option value="main.models.PlantMaster.*" />
+          <option value="main.models.User.*" />
+          <option value="main.models.VehicleEntry.*" />
+          <option value="main.models.MaterialTypeMaster.*" />
+          <option value="main.models.MaterialDescriptionMaster.*" />
+          <option value="main.models.VehicleMaster.*" />
+          <option value="main.models.DeviationMaster.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

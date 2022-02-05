@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container pt-5">
+    <table class="table">
+        <tbody id="files-body">
+        {% for file in files %}
+        <tr onclick=getFiles("{{file.path}}","{{file.type}}")>
+            <td>{{file.type}}</td>
+            <td>{{file.name}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
+
+{% block afterbody %}
+<script>
+function getFiles(path, file_type) {
+    let data = new FormData();
+    data.append("path", path)
+    data.append("csrfmiddlewaretoken", '{{csrf_token}}')
+
+    axios.post(route_api_files, data)
+     .then(function (response) {
+     if(file_type!=='dir'){
+        window.open(route_api_view_file, '_blank');
+     }
+     else{
+             var files = response.data.files;
+             var file_body = document.getElementById('files-body');
+             file_body.innerHTML = "";
+             for(let i=0; i<files.length; i++)
+             {
+                file_body.innerHTML += `
+                <tr onclick=getFiles('${files[i].path}','${files[i].type}')>
+                <td>${getIcon(files[i].type)}</td>
+                <td>${files[i].name}</td>
+                </tr>`;
+         }
+     }
+  })
+     .catch(errors => console.log(errors))
+  };
+</script>
+{% endblock afterbody %}

@@ -1,0 +1,9 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+create server
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Create server</button>
+</form>
+{% endblock content %}
