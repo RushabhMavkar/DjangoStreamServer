@@ -1,8 +1,15 @@
 {% extends 'main/base.html' %}
 {% block base %}
-<form method="post">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Login</button>
-</form>
+<div class="container pt-5">
+    <div class="neomorphic p-4 rounded">
+        <h5 class="text-center mb-3 text-muted">Login</h5>
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <small class="text-muted ">Not a member, <a style="color:#076f94;" href="{% url 'main_signup' %}">Signup</a></small>
+            <button class="btn neomorphic text-muted px-4 ms-auto d-flex" type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
 {% endblock base%}

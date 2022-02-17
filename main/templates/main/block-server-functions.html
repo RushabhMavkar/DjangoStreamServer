@@ -1,0 +1,21 @@
+{% load static %}
+<div id="server-functions" class="mt-5">
+    <div class="neomorphic bg-accent-dark">
+        <a href="{% url 'main_share_qrcode' %}">
+            <img src="{% static 'main/assets/svg/share-fill.svg' %}" alt="share icon">
+            <span class="text-muted">Share</span>
+        </a>
+    </div>
+    <div class="neomorphic bg-accent-dark">
+        <a href="{% url 'main_dashboard' %}">
+            <img src="{% static 'main/assets/svg/flowchart-fill.svg' %}" alt="share icon">
+            <span class="text-muted">File structure</span>
+        </a>
+    </div>
+    <div class="neomorphic bg-accent-dark">
+        <a href="{% url 'main_dashboard' %}">
+            <img src="{% static 'main/assets/svg/people-fill.svg' %}" alt="share icon">
+            <span class="text-muted">Users connected</span>
+        </a>
+    </div>
+</div>
