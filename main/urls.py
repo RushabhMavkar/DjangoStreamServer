@@ -13,4 +13,6 @@ urlpatterns = [
 
     path('server/create/', views.create_server, name='main_create_server'),
     path('view/file/', views.serve_file, name='main_serve_file'),
+
+    path('qrcode/', views.share_qrcode, name='main_share_qrcode'),
 ]
