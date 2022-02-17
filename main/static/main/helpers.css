@@ -500,16 +500,16 @@ svg {
 }
 
 .badge {
-    display: inline-block;
-    padding: .35em .65em;
-    font-size: .75em;
+    display: flex;
     font-weight: 700;
     line-height: 1;
     color: #fff;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    margin: 0 0 auto 0
+    padding: 9px 15px;
+    font-size: smaller;
+    align-items: center;
 }
 
 .text-dark {
@@ -546,3 +546,73 @@ tbody, td, tfoot, th, thead, tr {
     border-style: solid;
     border-width: 0;
 }
+
+.text-center {
+    text-align: center!important
+}
+
+form input {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-clip: padding-box;
+    background-image: linear-gradient(to bottom right, #1d1f20, #0e1013) !important;
+    box-shadow: inset 9px 9px 13px -9px black, inset -6px -6px 4px -7px #676767, inset -3px -3px 18px -6px black !important;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.7rem;
+    margin:0.3rem 0 1rem 0;
+    border:none;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+form input:focus {
+    color: #212529;
+    background-color: #000;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+}
+
+input[type=text] {
+  background-color: -internal-light-dark(#3CBC8D,#3CBC8D) !important;
+  color: white;
+}
+
+form label {
+    color:gray;
+}
+
+*,::after,::before {
+    box-sizing: border-box
+}
+
+@media (prefers-reduced-motion:no-preference) {
+    :root {
+        scroll-behavior: smooth
+    }
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: initial;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
