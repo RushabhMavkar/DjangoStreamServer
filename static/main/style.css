@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&display=swap");
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Be Vietnam Pro", sans-serif !important;
+}
+
+nav {
+  padding: 0.5rem 1rem;
+  background: white;
+  display: flex;
+  box-shadow: 0 0 15px -12px black;
+  align-items: center;
+  color: dimgray;
+}
+
+nav .name {
+  margin-right: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0 auto 0 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 1rem;
+}
+
+.bg-accent {
+  background-image: linear-gradient(to bottom right, #37a7e4, #5d68ff);
+  color: aliceblue;
+}
+
+.bg-muted {
+  background-image: linear-gradient(to bottom right, #f6f6f6, #818181);
+  color: black;
+}
+
+.bg-accent-dark {
+  background-image: linear-gradient(to bottom right, #1d1f20, #0e1013);
+  color: aliceblue;
+}
+
+.bg-dark {
+  background: #151719 !important;
+  color: white !important;
+}
+
+.text-muted {
+  color: #828a91 !important;
+}
+
+#create-server-dialog {
+  flex-direction: column;
+  text-align: center;
+}
+
+#create-server-dialog svg {
+  stroke: white;
+}
+
+.neomorphic {
+  box-shadow: -6px -6px 16px -16px white, 6px 6px 18px -6px black, inset 3px 3px 6px -6px white, inset -5px -5px 6px -5px black !important;
+}
+
+.neomorphic-invert{
+    background: rgb(0 0 0 / 20%) !important;
+    box-shadow: inset 9px 9px 13px -9px black, inset -6px -6px 4px -7px #676767, inset -3px -3px 18px -6px black !important;
+    }
+
+.text-disc {
+-webkit-text-security: disc;
+cursor: pointer;
+}
+
+#text-hidden-icon svg{
+color: #828a91 !important;
+cursor: pointer;
+}
+
+#text-hidden-icon{
+    display:flex;
+    align-items: center;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: inset 9px 9px 13px -9px black, inset -6px -6px 4px -7px #676767, inset -3px -3px 18px -6px black, 0 0 0 30px #151719 inset !important;
+    border:0px solid #5d5d9b;
+    -webkit-text-fill-color: white !important;
+}
+
+#server-functions{
+    display:flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+#server-functions>div{
+    display:flex;
+    flex:1;
+    border-radius:10px;
+
+}
+
+#server-functions>div>a {
+    display:flex;
+    width:100%;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:1rem;
+    text-align:center;
+}
+
+
+#server-functions img {
+    height: 50px;
+    width: 50px;
+    background: rgb(0 0 0 / 17%);
+    padding: 10px;
+    margin: 0 auto 0.5rem auto;
+    border-radius: 30%;
+}
+
+
+#server-functions a span{
+    width:100%;
+    text-align:center;
+    font-weight: 600;
+    margin-top:0.5rem;
+}
+
+#qrcode-container {
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+}
+
+#qrcode-container img{
+    max-height:300px;
+    max-width:300px;
+}
+
+#qrcode-container h6{
+    background: rgb(0 0 0 / 30%);
+}
+
