@@ -11,6 +11,7 @@ import os
 from . import forms
 from . import models
 from . import os_functions
+from . import helper_functions
 
 
 def logout_page(request):
@@ -98,3 +99,12 @@ def api_view_server_files(request):
 def serve_file(request):
     path = request.session.get('file_path')
     return FileResponse(open(path, 'rb'))
+
+
+@login_required
+def share_qrcode(request):
+    ip = helper_functions.get_ip()
+    port = 8000
+    helper_functions.create_qrcode(port)
+    data = {'ip': ip, 'port': port}
+    return render(request, 'main/share-qrcode.html', data)
