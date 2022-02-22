@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+Join server
+<div class="container pt-5">
+    <div class="neomorphic p-4 rounded">
+        <h5 class="text-center mb-3 text-muted">Join Shared Server</h5>
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <button class="btn neomorphic text-muted px-4 ms-auto d-flex" type="submit">Join</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
