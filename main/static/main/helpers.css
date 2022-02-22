@@ -551,7 +551,7 @@ tbody, td, tfoot, th, thead, tr {
     text-align: center!important
 }
 
-form input {
+form input[type=text] {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -586,6 +586,7 @@ input[type=text] {
 
 form label {
     color:gray;
+    margin-top:1rem;
 }
 
 *,::after,::before {

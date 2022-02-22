@@ -173,3 +173,7 @@ input:-webkit-autofill:active{
 .bg-darker {
     background: rgb(0 0 0 / 20%);
 }
+
+label[for="id_access"]{
+    display:block;
+}
