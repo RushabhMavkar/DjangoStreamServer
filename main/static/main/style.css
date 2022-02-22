@@ -35,6 +35,12 @@ nav ul li {
   margin-left: 1rem;
 }
 
+@media (max-width: 500px) {
+    #nav-name {
+        display:none;
+    }
+}
+
 .bg-accent {
   background-image: linear-gradient(to bottom right, #37a7e4, #5d68ff);
   color: aliceblue;
