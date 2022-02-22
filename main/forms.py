@@ -18,3 +18,7 @@ class CreateServer(ModelForm):
     class Meta:
         model = models.Server
         exclude = ['admin']
+
+
+class JoinServer(forms.Form):
+    server_code = forms.CharField(label='Server code')
