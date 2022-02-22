@@ -4,10 +4,10 @@
     <span class="text-muted" style="font-weight:600;">Stream Server</span>
     <ul>
         <li><a href="{% url 'main_dashboard' %}">Dashboard</a></li>
-        <li><a href="">Users</a></li>
-        <li><a href="">Config</a></li>
+<!--        <li><a href="">Users</a></li>-->
+<!--        <li><a href="">Config</a></li>-->
     </ul>
-    <span class="name">{{request.user.first_name}}</span>
+    <span id="nav-name" class="name">{{request.user.first_name}}</span>
     <a class="btn bg-accent" href="{% url 'main_logout' %}">Logout</a>
 </nav>
 
