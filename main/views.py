@@ -139,8 +139,15 @@ def delete_server(request, code):
 
 @login_required
 def view_video(request):
-    print('in video')
     file_path = request.session.get('file_path')
     file_name = file_path.split("\\")[-1]
     data = {'file_name': file_name}
     return render(request, 'main/video-player.html', data)
+
+
+@login_required
+def users_connected(request):
+    server = models.UserAccess.objects.get(user=request.user, is_admin=True).server
+    users_joined = models.UserAccess.objects.filter(server=server).order_by('-is_admin')
+    data = {'users': users_joined}
+    return render(request, 'main/users-connected.html', data)
