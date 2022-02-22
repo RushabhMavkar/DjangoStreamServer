@@ -26,8 +26,11 @@ function getFiles(path, file_type) {
 
     axios.post(route_api_files, data)
      .then(function (response) {
-     if(file_type!=='dir'){
+     if(file_type!=='dir' && file_type!=='video'){
         window.open(route_api_view_file, '_blank');
+     }
+     else if(file_type=='video'){
+        window.open(route_view_video);
      }
      else{
              var files = response.data.files;
