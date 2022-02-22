@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block content %}
+<div class="container pt-5">
+    <h4 class="mb-4 text-center text-muted">Users connected</h4>
+    <div>
+        {% for user in users %}
+        <div class="d-flex bg-lighter mb-2 rounded">
+            <div class="my-auto ms-3 me-auto">
+                {{user.user.first_name}}
+                {% if user.is_admin %}
+                <small class="rounded py-1 px-2 bg-muted">Admin</small>
+                {% endif %}
+            </div>
+            <a href="#">
+                <img class="rounded me-1" style="background: #755b5b3b;height: 100%;padding: 1rem;" src="{% static 'main/assets/svg/trash-fill-danger.svg' %}" alt="">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
