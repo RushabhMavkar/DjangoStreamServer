@@ -22,3 +22,5 @@ class UserAccess(models.Model):
     activated = models.BooleanField(default=False)
     has_validity = models.BooleanField(default=False)
     valid_till = models.DateTimeField(null=True)
+    joined_on = models.DateTimeField(auto_now_add=True)
+    latest_access = models.DateTimeField(auto_now=True)
