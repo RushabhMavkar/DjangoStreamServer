@@ -1,9 +1,13 @@
 {% extends 'main/layout.html' %}
 {% block content %}
-create server
-<form method="post">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Create server</button>
-</form>
+<div class="container pt-5">
+    <h4 class="text-center text-muted">Create server</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <div class="d-flex mb-3">
+            <button class="btn bg-accent ms-auto" type="submit">Create server</button>
+        </div>
+    </form>
+</div>
 {% endblock content %}
