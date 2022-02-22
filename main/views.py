@@ -51,8 +51,8 @@ def signup_page(request):
 
 @login_required
 def dashboard(request):
-    server = models.Server.objects.filter(admin=request.user).first()
-    data = {'server': server}
+    server_info = models.UserAccess.objects.filter(user=request.user).first()
+    data = {'server_info': server_info}
     return render(request, 'main/dashboard.html', data)
 
 
@@ -66,7 +66,8 @@ def create_server(request):
             is_secure = form.cleaned_data.get('is_secure')
             access = form.cleaned_data.get('access')
             # TODO -- check is path is valid or not
-            models.Server.objects.create(admin=user, name=name, is_secure=is_secure, access=access)
+            server = models.Server.objects.create(admin=user, name=name, is_secure=is_secure, access=access)
+            models.UserAccess.objects.create(user=user, server=server, is_admin=True, activated=True)
             return redirect('main_dashboard')
     data = {'form': form}
     return render(request, 'main/create-server.html', data)
@@ -75,8 +76,8 @@ def create_server(request):
 @login_required
 def view_server_files(request):
     p = request.POST.get('path')
-    path = urllib.parse.unquote_plus(p) if p else models.Server.objects.get(admin=request.user).access
-    print(path)
+    server_info = models.UserAccess.objects.get(user=request.user)
+    path = urllib.parse.unquote_plus(p) if p else server_info.server.access
     files = os_functions.get_files(path)
     data = {'files': files}
     return render(request, 'main/file-viewer.html', data)
@@ -86,7 +87,7 @@ def view_server_files(request):
 @api_view(['POST'])
 def api_view_server_files(request):
     p = request.POST.get('path')
-    path = urllib.parse.unquote_plus(p) if p else models.Server.objects.get(admin=request.user).access
+    path = urllib.parse.unquote_plus(p) if p else models.UserAccess.objects.get(user=request.user).server.access
     if os.path.isfile(path):
         request.session['file_path'] = path
         return JsonResponse('Success', safe=False)
@@ -108,3 +109,38 @@ def share_qrcode(request):
     helper_functions.create_qrcode(port)
     data = {'ip': ip, 'port': port}
     return render(request, 'main/share-qrcode.html', data)
+
+
+@login_required
+def join_server(request):
+    form = forms.JoinServer(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            code = form.cleaned_data.get('server_code')
+            server = models.Server.objects.filter(code=code)
+            if server.exists():
+                models.UserAccess.objects.create(user=request.user, server=server.first())
+                return redirect('main_dashboard')
+            else:
+                print('Invalid')
+    data = {'form': form}
+    return render(request, 'main/join-server.html', data)
+
+
+@login_required
+def delete_server(request, code):
+    server = models.Server.objects.filter(code=code)
+    if server.exists():
+        user_access = models.UserAccess.objects.get(user=request.user, server=server)
+        if user_access.is_admin:
+            server.delete()
+    return redirect('main_dashboard')
+
+
+@login_required
+def view_video(request):
+    print('in video')
+    file_path = request.session.get('file_path')
+    file_name = file_path.split("\\")[-1]
+    data = {'file_name': file_name}
+    return render(request, 'main/video-player.html', data)
