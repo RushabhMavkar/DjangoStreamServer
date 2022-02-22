@@ -165,3 +165,11 @@ input:-webkit-autofill:active{
     background: rgb(0 0 0 / 30%);
 }
 
+
+.bg-lighter{
+    background: rgb(255 255 255 / 5%);
+}
+
+.bg-darker {
+    background: rgb(0 0 0 / 20%);
+}
