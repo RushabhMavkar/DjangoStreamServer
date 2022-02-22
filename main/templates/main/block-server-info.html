@@ -1,34 +1,57 @@
 {% load static %}
 <div class="bg-accent-dark text-muted neomorphic p-5 rounded">
-  <h5 class="text-center">{{server.name}}</h5>
-  <div class="d-flex mb-3">
-    <div class="badge neomorphic-invert text-muted rounded">
-      {% if server.is_secure %}
-      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
-        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
-      </svg>
-      <span class="ms-1">Private</span>
-      {% else %}
-      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-unlock-fill" viewBox="0 0 16 16">
-        <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z" />
-      </svg>
-      <span class="ms-1">Public</span>
-      {% endif %}
-    </div>
-  </div>
-  <div>
-    <div id="joining-code" class="d-flex mb-3">
-      <span class="me-4">Joining code </span>
-      <div class="d-flex" onclick="ShowHiddenText();">
-        <p id="server-join-code" class="mb-0 me-2 text-disc">OAndwJBNDoakd</p>
-        <div id="text-hidden-icon">
-          <svg style="color:white;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+    <h5 class="text-center">{{server_info.server.name}}</h5>
+    <div class="d-flex mb-3">
+        <div class="badge neomorphic-invert text-muted rounded">
+            {% if server_info.server.is_secure %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-lock-fill"
+                 viewBox="0 0 16 16">
+                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+            </svg>
+            <span class="ms-1">Password protected</span>
+            {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-unlock-fill"
+                 viewBox="0 0 16 16">
+                <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z"/>
+            </svg>
+            <span class="ms-1">Public</span>
+            {% endif %}
         </div>
-      </div>
+        <div class="ms-3 badge neomorphic-invert text-muted rounded">
+            {% if server_info.server.code %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-unlock-fill"
+                 viewBox="0 0 16 16">
+                <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z"/>
+            </svg>
+            <span class="ms-1">Shared</span>
+            {% else %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-lock-fill"
+                 viewBox="0 0 16 16">
+                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+            </svg>
+            <span class="ms-1">Not Shared</span>
+            {% endif %}
+        </div>
     </div>
-  </div>
-  <p>Access given to - <strong>{{server.access}}</strong></p>
-  <div class="d-flex">
-    <a href="{% url 'main_view_files' %}" class="btn bg-muted ms-auto">View shared files</a>
-  </div>
+    {% if server_info.server.code and server_info.is_admin %}
+    <div>
+        <div id="joining-code" class="d-flex mb-3">
+            <span class="me-4">Joining code </span>
+            <div class="d-flex" onclick="ShowHiddenText();">
+                <p id="server-join-code" class="mb-0 me-2 text-disc">{{server_info.server.code}}</p>
+                <div id="text-hidden-icon">
+                    <svg style="color:white;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                         fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>Access given to - <strong>{{server_info.server.access}}</strong></p>
+    {% endif %}
+    <div class="d-flex">
+        <a href="{% url 'main_view_files' %}" class="btn bg-muted mt-3 mx-auto">View shared files</a>
+    </div>
 </div>
