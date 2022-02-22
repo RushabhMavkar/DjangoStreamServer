@@ -14,6 +14,7 @@ urlpatterns = [
     path('server/create/', views.create_server, name='main_create_server'),
     path('server/join/', views.join_server, name='main_join_server'),
     path('server/delete/', views.delete_server, name='main_delete_server'),
+    path('server/users/', views.users_connected, name='main_users_connected'),
 
     path('view/file/', views.serve_file, name='main_serve_file'),
     path('view/video/', views.view_video, name='main_video_player'),
