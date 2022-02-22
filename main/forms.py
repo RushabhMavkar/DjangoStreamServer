@@ -17,7 +17,7 @@ class Signup(forms.Form):
 class CreateServer(ModelForm):
     class Meta:
         model = models.Server
-        exclude = ['admin']
+        exclude = ['admin', 'code']
 
 
 class JoinServer(forms.Form):
