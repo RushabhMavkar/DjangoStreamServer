@@ -1,11 +1,15 @@
 {% extends 'main/layout.html'%}
 {% block content %}
 <div class="container pt-5">
-    {% if server %}
-    {% include 'main/block-server-info.html' %}
-    {% include 'main/block-server-functions.html' %}
+    {% if server_info.server %}
+        {% include 'main/block-server-info.html' %}
+        {% if server_info.is_admin %}
+            {% include 'main/block-server-functions.html' %}
+        {% endif %}
+    {% elif not server_info.server and server_info.is_admin %}
+        {% include 'main/block-create-server-dialog.html' %}
     {% else %}
-    {% include 'main/block-create-server-dialog.html' %}
+        {% include 'main/block-join-server-dialog.html' %}
     {% endif %}
 </div>
 {% endblock content %}
