@@ -1,17 +1,18 @@
-from django.shortcuts import render, redirect
+import os
+import secrets
+import urllib.parse
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from rest_framework.decorators import api_view
 from django.http.response import JsonResponse, FileResponse
-
-import urllib.parse
-import os
+from django.shortcuts import render, redirect
+from rest_framework.decorators import api_view
 
 from . import forms
+from . import helper_functions
 from . import models
 from . import os_functions
-from . import helper_functions
 
 
 def logout_page(request):
@@ -65,8 +66,14 @@ def create_server(request):
             name = form.cleaned_data.get('name')
             is_secure = form.cleaned_data.get('is_secure')
             access = form.cleaned_data.get('access')
+            code = secrets.token_hex(2)
+            while True:
+                if models.Server.objects.filter(code=code).exists():
+                    code = secrets.token_hex(2)
+                    continue
+                break
             # TODO -- check is path is valid or not
-            server = models.Server.objects.create(admin=user, name=name, is_secure=is_secure, access=access)
+            server = models.Server.objects.create(name=name, code=code, is_secure=is_secure, access=access)
             models.UserAccess.objects.create(user=user, server=server, is_admin=True, activated=True)
             return redirect('main_dashboard')
     data = {'form': form}
