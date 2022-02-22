@@ -128,12 +128,9 @@ def join_server(request):
 
 
 @login_required
-def delete_server(request, code):
-    server = models.Server.objects.filter(code=code)
-    if server.exists():
-        user_access = models.UserAccess.objects.get(user=request.user, server=server)
-        if user_access.is_admin:
-            server.delete()
+def delete_server(request):
+    server = models.UserAccess.objects.get(user=request.user, is_admin=True).server
+    server.delete()
     return redirect('main_dashboard')
 
 
