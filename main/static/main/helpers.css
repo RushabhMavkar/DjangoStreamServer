@@ -551,7 +551,7 @@ tbody, td, tfoot, th, thead, tr {
     text-align: center!important
 }
 
-form input[type=text] {
+form input[type=text], input[type=password] {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -560,7 +560,7 @@ form input[type=text] {
     line-height: 1.5;
     background-clip: padding-box;
     background-image: linear-gradient(to bottom right, #1d1f20, #0e1013) !important;
-    box-shadow: inset 9px 9px 13px -9px black, inset -6px -6px 4px -7px #676767, inset -3px -3px 18px -6px black !important;
+    box-shadow: inset 9px 9px 13px -9px black, inset -6px -6px 4px -7px #676767, inset -3px -3px 18px -6px black;
     border: 1px solid #ced4da;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -572,7 +572,7 @@ form input[type=text] {
 }
 
 form input:focus {
-    color: #212529;
+    color: white;
     background-color: #000;
     border-color: #86b7fe;
     outline: 0;

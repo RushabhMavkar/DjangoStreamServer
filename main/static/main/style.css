@@ -101,7 +101,12 @@ cursor: pointer;
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
     -webkit-box-shadow: inset 9px 9px 13px -9px black, inset -6px -6px 4px -7px #676767, inset -3px -3px 18px -6px black, 0 0 0 30px #151719 inset !important;
     border:0px solid #5d5d9b;
     -webkit-text-fill-color: white !important;
