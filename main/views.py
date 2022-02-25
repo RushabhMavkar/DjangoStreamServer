@@ -156,3 +156,8 @@ def users_connected(request):
     users_joined = models.UserAccess.objects.filter(server=server).order_by('-is_admin')
     data = {'users': users_joined}
     return render(request, 'main/users-connected.html', data)
+
+
+@login_required
+def activate_user(request):
+    return redirect('main_dashboard')

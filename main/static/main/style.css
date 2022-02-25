@@ -182,3 +182,9 @@ select:-webkit-autofill:focus {
 label[for="id_access"]{
     display:block;
 }
+
+#server-info-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
