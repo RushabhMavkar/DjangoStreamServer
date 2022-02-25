@@ -1,6 +1,6 @@
 {% load static %}
-<div class="bg-accent-dark text-muted neomorphic p-5 rounded">
-    <h5 class="text-center">{{server_info.server.name}}</h5>
+<div id="server-info-card" class="bg-accent-dark text-muted neomorphic p-5 rounded">
+    <h5 class="mb-4">{{server_info.server.name}}</h5>
     <div class="d-flex mb-3">
         <div class="badge neomorphic-invert text-muted rounded">
             {% if server_info.server.is_secure %}
