@@ -24,3 +24,10 @@ class UserAccess(models.Model):
     valid_till = models.DateTimeField(null=True)
     joined_on = models.DateTimeField(auto_now_add=True)
     latest_access = models.DateTimeField(auto_now=True)
+
+
+class Notification(models.Model):
+    from_user = models.ForeignKey(to=User, related_name="from_user", on_delete=models.DO_NOTHING)
+    to_user = models.ForeignKey(to=User, related_name="to_user", on_delete=models.CASCADE)
+    message = models.CharField(max_length=512)
+    read = models.BooleanField(default=False)
