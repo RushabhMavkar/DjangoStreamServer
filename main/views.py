@@ -126,7 +126,8 @@ def join_server(request):
             code = form.cleaned_data.get('server_code')
             server = models.Server.objects.filter(code=code)
             if server.exists():
-                models.UserAccess.objects.create(user=request.user, server=server.first())
+                activated = not server.first().is_secure
+                models.UserAccess.objects.create(user=request.user, server=server.first(), activated=activated)
                 return redirect('main_dashboard')
             else:
                 print('Invalid')
