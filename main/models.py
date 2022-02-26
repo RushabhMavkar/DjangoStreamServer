@@ -29,5 +29,6 @@ class UserAccess(models.Model):
 class Notification(models.Model):
     from_user = models.ForeignKey(to=User, related_name="from_user", on_delete=models.DO_NOTHING)
     to_user = models.ForeignKey(to=User, related_name="to_user", on_delete=models.CASCADE)
+    category = models.CharField(max_length=256)
     message = models.CharField(max_length=512)
     read = models.BooleanField(default=False)
