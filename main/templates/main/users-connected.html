@@ -4,7 +4,7 @@
 <div class="container pt-5">
     <h4 class="mb-4 text-center text-muted">Users connected</h4>
     <div>
-        {% for user in users %}
+        {% for user in users_joined %}
         <div class="d-flex bg-lighter mb-2 rounded">
             <div class="py-3 ms-3 me-auto">
                 <div class="d-flex">
@@ -20,16 +20,35 @@
                 </div>
             </div>
             {% if not user.is_admin %}
-            <a class="my-auto me-3" href="#">
+            <a class="my-auto me-3" href="{% url 'main_deactivate_user' user.user.id %}">
                 <div>
                     <img class="rounded" style="background: #755b5b3b;height: 100%;padding: 1rem;"
                          src="{% static 'main/assets/svg/trash-fill-danger.svg' %}" alt="">
                 </div>
             </a>
             {% endif %}
-
         </div>
         {% endfor %}
     </div>
+    {% if users_pending %}
+    <h4 class="mt-5 mb-4 text-center text-muted">Pending requests</h4>
+    <div>
+        {% for user in users_pending %}
+        <div class="d-flex bg-lighter mb-2 rounded">
+            <div class="py-3 ms-3 me-auto">
+                <div class="d-flex">
+                    <h6 class="text-muted my-auto me-3">{{user.user.first_name}}</h6>
+                </div>
+                <div class="text-muted mt-2">
+                    <small><strong>Requested on -</strong> {{user.joined_on}}</small>
+                </div>
+            </div>
+                <div class="d-flex my-auto p-3">
+                    <a class="btn bg-accent" href="{% url 'main_activate_user' user.user.id %}">Approve</a>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 {% endblock content %}
