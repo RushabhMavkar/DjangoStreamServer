@@ -20,4 +20,7 @@ urlpatterns = [
     path('view/video/', views.view_video, name='main_video_player'),
 
     path('qrcode/', views.share_qrcode, name='main_share_qrcode'),
+
+    path('user/approve/<int:user_id>', views.activate_user, name='main_activate_user'),
+    path('user/reject/<int:user_id>', views.deactivate_user, name='main_deactivate_user')
 ]
