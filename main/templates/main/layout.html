@@ -13,6 +13,17 @@
     <a class="btn bg-accent" href="{% url 'main_logout' %}">Logout</a>
 </nav>
 
+{% if messages %}
+<div class="alerts">
+    {% for message in messages %}
+    <div class="alert bg-accent mt-3 me-3 rounded p-3 {{ message.tags }}">
+        <span class="me-3">{{ message }}</span>
+        <span class="closebtn ms-auto" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 {% block content %} {% endblock content %}
 
 {% endblock base %}
