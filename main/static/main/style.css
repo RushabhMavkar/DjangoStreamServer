@@ -188,3 +188,32 @@ label[for="id_access"]{
     flex-direction: column;
     align-items: center;
 }
+
+.alerts{
+    position:fixed;
+    right:1rem;
+}
+
+.info{
+    background: #37a7e421;
+    border: 1px solid #37a7e4;
+}
+
+.error{
+    background: #e4373721;
+    border: 1px solid #e43737;
+}
+
+.success{
+    background: #37e44b21;
+    border: 1px solid #37e471;
+}
+
+.alert{
+    float:right;
+    max-width:500px;
+}
+
+.closebtn{
+ cursor:pointer;
+ }
