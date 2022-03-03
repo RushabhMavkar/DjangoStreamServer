@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.http.response import JsonResponse, FileResponse
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view
+from django.contrib import messages
 
 from . import forms
 from . import helper_functions
@@ -139,6 +140,7 @@ def join_server(request):
 def delete_server(request):
     server = models.UserAccess.objects.get(user=request.user, is_admin=True).server
     server.delete()
+    messages.error(request, 'Server deleted!')
     return redirect('main_dashboard')
 
 
@@ -167,6 +169,7 @@ def activate_user(request, user_id):
     if not approval.activated:
         approval.activated = True
         approval.save()
+        messages.success(request, 'User activated')
     return redirect('main_users_connected')
 
 
@@ -177,4 +180,5 @@ def deactivate_user(request, user_id):
     if approval.activated:
         approval.activated = False
         approval.save()
+        messages.error(request, 'User deactivated!')
     return redirect('main_users_connected')
