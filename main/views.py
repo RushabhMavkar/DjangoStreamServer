@@ -153,11 +153,28 @@ def view_video(request):
 @login_required
 def users_connected(request):
     server = models.UserAccess.objects.get(user=request.user, is_admin=True).server
-    users_joined = models.UserAccess.objects.filter(server=server).order_by('-is_admin')
-    data = {'users': users_joined}
+    users_joined = models.UserAccess.objects.filter(server=server, activated=True).order_by('-is_admin')
+    users_pending = models.UserAccess.objects.filter(server=server, activated=False)
+    data = {'users_joined': users_joined, 'users_pending': users_pending}
     return render(request, 'main/users-connected.html', data)
 
 
 @login_required
-def activate_user(request):
-    return redirect('main_dashboard')
+def activate_user(request, user_id):
+    user = models.User.objects.get(id=user_id)
+    server = models.UserAccess.objects.get(user=request.user, is_admin=True, activated=True).server
+    approval = models.UserAccess.objects.get(user=user, server=server)
+    if not approval.activated:
+        approval.activated = True
+        approval.save()
+    return redirect('main_users_connected')
+
+
+def deactivate_user(request, user_id):
+    user = models.User.objects.get(id=user_id)
+    server = models.UserAccess.objects.get(user=request.user, is_admin=True, activated=True).server
+    approval = models.UserAccess.objects.get(user=user, server=server)
+    if approval.activated:
+        approval.activated = False
+        approval.save()
+    return redirect('main_users_connected')
