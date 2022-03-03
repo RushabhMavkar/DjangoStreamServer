@@ -52,7 +52,7 @@ def signup_page(request):
 
 @login_required
 def dashboard(request):
-    server_info = models.UserAccess.objects.filter(user=request.user).first()
+    server_info = models.UserAccess.objects.filter(user=request.user, activated=True).first()
     data = {'server_info': server_info}
     return render(request, 'main/dashboard.html', data)
 
